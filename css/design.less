@@ -11,18 +11,15 @@
 ********************************************************************/
 
 #dokuwiki__header {
-    padding: 2em 0 1.5em;
+    padding: 2em 0 0 0;
 
     .headings{
         width: 55%;
         border-bottom: 1px solid @ini_border;
     }
     .tools {
-        margin-bottom: 1.5em;
+        margin-bottom: 0;
         width: 49%;
-    }
-    .tools {
-        margin-top: .2em;
     }
 
     h1 {
@@ -242,10 +239,14 @@ form.search {
 /*____________ breadcrumbs ____________*/
 
 .dokuwiki div.breadcrumbs {
-    border-top: 1px solid @ini_border;
-    border-bottom: 1px solid @ini_background;
-    margin-bottom: .5em;
+    border-top: 0px solid @ini_border;
+    border-bottom: 0px solid @ini_background;
+    margin-bottom: .1em;
     font-size: 0.875em;
+    padding-top: 0.5em;
+    margin-left: 4em;
+    margin-right: auto;
+    width: 90%;
     clear: both;
 
     div {
@@ -253,16 +254,16 @@ form.search {
     }
 
     div:only-child {
-        border-top: 1px solid @ini_background;
-        border-bottom: 1px solid @ini_border;
+        border-top: 0px solid @ini_background;
+        border-bottom: 0px solid @ini_border;
     }
 
     div:first-child {
-        border-top: 1px solid @ini_background;
+        border-top: 0px solid @ini_background;
     }
 
     div:last-child {
-        border-bottom: 1px solid @ini_border;
+        border-bottom: 0px solid @ini_border;
     }
 
     .bcsep {
@@ -431,4 +432,48 @@ form.search {
 
 [dir=rtl] #dokuwiki__footer .license img {
     margin: 0 0 0 .5em;
+}
+
+// -------------------xxxx------------------
+.rawedges{
+    border: solid @ini_background_alt;
+    border-width: 1px 1px 0;
+    background-color: @ini_background;
+    color: @ini_text_alt;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    box-shadow: 0 0 .5em @ini_text_alt;
+}
+
+#xxexpand{
+position: absolute;
+    top: -0.5em;
+    right: -2.0em;
+    cursor: pointer;
+}
+#xxsidebar{
+    float: left !important;
+    overflow: hidden;
+}
+#dokuwiki__aside{
+    padding-left: 0.5em;
+}
+
+#xxtoolpop{
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 0.1em;
+    left: 0em;
+    height: 70%;
+    width: 1em;
+//    background-color: transparent;
+    background-image:url(images/toolpop.png);
+    background-repeat:no-repeat;
+
+    background-position:0.1em 1.5em;
+}
+
+#xxtoolpop:hover{
+    background-color:@ini_background_site;
 }

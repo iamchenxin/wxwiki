@@ -30,26 +30,27 @@ $showSidebar = $hasSidebar && ($ACT=='show');
         echo ($showSidebar) ? 'showSidebar' : ''; ?> <?php echo ($hasSidebar) ? 'hasSidebar' : ''; ?>">
 
         <?php include('tpl_header.php') ?>
+            <div class="xxcontenthook rawedges" id="xxsidebar">
+                <?php if($showSidebar): ?>
+                    <!-- ********** ASIDE ********** -->
+                    <div id="dokuwiki__aside"><div class="pad aside include group">
+                        <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
+                        <div class="content"><div class="group">
+                            <?php tpl_flush() ?>
+                            <?php tpl_includeFile('sidebarheader.html') ?>
+                            <?php tpl_include_page($conf['sidebar'], true, true) ?>
+                            <?php tpl_includeFile('sidebarfooter.html') ?>
+                        </div></div>
+                    </div></div><!-- /aside -->
+                <?php endif; ?>
+            </div>
 
-        <div class="wrapper group">
-
-            <?php if($showSidebar): ?>
-                <!-- ********** ASIDE ********** -->
-                <div id="dokuwiki__aside"><div class="pad aside include group">
-                    <h3 class="toggle"><?php echo $lang['sidebar'] ?></h3>
-                    <div class="content"><div class="group">
-                        <?php tpl_flush() ?>
-                        <?php tpl_includeFile('sidebarheader.html') ?>
-                        <?php tpl_include_page($conf['sidebar'], true, true) ?>
-                        <?php tpl_includeFile('sidebarfooter.html') ?>
-                    </div></div>
-                </div></div><!-- /aside -->
-            <?php endif; ?>
-
+        <div class="wrapper group" id="xxexpandcon">
             <!-- ********** CONTENT ********** -->
             <div id="dokuwiki__content"><div class="pad group">
                 <?php html_msgarea() ?>
-
+                <div id="xxtoolpop"></div>
+                <div id="xxexpand" onclick="xxexpandcontent()"><img src="<?php echo tpl_basedir(); ?>images/expand.png"/></div>
                 <div class="pageId"><span><?php echo hsc($ID) ?></span></div>
 
                 <div class="page group">

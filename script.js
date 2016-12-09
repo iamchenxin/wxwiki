@@ -77,3 +77,14 @@ jQuery(function(){
         $content.css('min-height', $sidebar.height());
     }
 });
+
+function xxexpandcontent(){
+    if( document.getElementById("xxexpandcon").style.maxWidth == "100%"){
+        jQuery(".desktop #xxsidebar").slideDown(500);
+        document.getElementById("xxexpandcon").style.maxWidth = "75em";
+
+    }else{
+        jQuery(".desktop #xxsidebar").hide();
+        document.getElementById("xxexpandcon").style.maxWidth = "100%";
+    }
+}
