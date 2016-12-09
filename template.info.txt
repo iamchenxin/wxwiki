@@ -1,0 +1,7 @@
+base     wxwiki
+author   iamchenxin
+email    iamchenxin@gmail.com
+date     2015-07-26
+name     wxwiki Template
+desc     DokuWiki's wechat server template.
+url      http://www.dokuwiki.org/template:wxwiki
