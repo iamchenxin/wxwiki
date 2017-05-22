@@ -49,7 +49,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
             <!-- ********** CONTENT ********** -->
             <div id="dokuwiki__content"><div class="pad group">
                 <?php html_msgarea() ?>
-                <div id="xxtoolpop"></div>
+                <div id="xxsidebar_toggle" onclick="sidebar_toggle()"><img src="<?php echo tpl_basedir(); ?>images/sidebar_menu.png"/></div>
                 <div id="xxexpand" onclick="xxexpandcontent()"><img src="<?php echo tpl_basedir(); ?>images/expand.png"/></div>
                 <div class="pageId"><span><?php echo hsc($ID) ?></span></div>
 
@@ -86,7 +86,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                                     'top'       => tpl_action('top',       true, 'li', true, '<span>', '</span>')
                                 )
                             );
-
+                            
                             // the page tools can be amended through a custom plugin hook
                             $evt = new Doku_Event('TEMPLATE_PAGETOOLS_DISPLAY', $data);
                             if($evt->advise_before()){

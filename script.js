@@ -88,3 +88,70 @@ function xxexpandcontent(){
         document.getElementById("xxexpandcon").style.maxWidth = "100%";
     }
 }
+
+function sidebar_toggle() {
+  jQuery(".desktop #xxsidebar").slideToggle();
+}
+/*
+ http://stackoverflow.com/questions/1038746/equivalent-of-string-format-in-jquery
+ */
+String.prototype.format = function () {
+    var args = arguments;
+    return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
+};
+
+function WxWindow(name, clientwin,top, left, width, height) {
+  this.top = top?top: "2%";
+  this.left = left?left: "2%";
+  this.width = width?width: "auto";
+  this.height = height?height: "auto";
+
+  var divstr='<div class="wx_WxWindow" id="wx_WxWindow_{0}" winid="{0}" ><div class="wx_clientwin">{1}</div> <div style="clear: both"></div>\
+    <input name="close" class="wx_button_r wx_close" type="button" value="close"> </div> '.format(name, clientwin);
+  this.jqwin=jQuery(divstr);
+  jQuery('body').append(this.jqwin);
+  this.jqwin.draggable();
+  this.jqwin.children("input[name='close']").click(function(){
+      jQuery(this).parent().slideUp(500);
+  });
+
+  if(jQuery("html").hasClass("phone")){
+    this.jqwin.css("width","100%");
+    this.jqwin.css("height",this.height);
+    this.jqwin.css("top",this.top);
+    this.jqwin.css("left","0%");
+  }else{
+    this.jqwin.css("width",this.width);
+    this.jqwin.css("height",this.height);
+    this.jqwin.css("top",this.top);
+    this.jqwin.css("left",this.left);
+  }
+}
+WxWindow.prototype.get_closebt=function(){return this.jqwin.children(".wx_close");};
+WxWindow.prototype.getwin=function(){return this.jqwin;};
+WxWindow.prototype.getwinid=function(){return this.jqwin.attr("winid");};
+WxWindow.prototype.getclientwin=function(){return this.jqwin.children(".wx_clientwin");};
+
+function bind_wx() {
+
+}
+var wx_bind_window = null;
+jQuery(function() {
+
+  jQuery('#wx_bind_wx').click(function (e) {
+    if (wx_bind_window == null) {
+      wx_bind_window = new WxWindow('wx_bind_wx',
+      '请输入微信收到的验证码:<br/><textarea class="wx_edit_area" name="wx_edit" class="edit"></textarea>\
+      <input name="wx_send" class="wx_button_r" type="button" value="确认验证码">',
+        e.pageY, e.pageX);
+    }
+    wx_bind_window.getwin().slideDown(500);
+    jQuery.ajax({
+        url:'http://p.z.cc/hi'
+    }).done( function(rt) {
+        console.log(rt);
+        wx_bind_window.getclientwin().append(jQuery("<h1>").text(rt));
+       // jQuery("<h1>").text(rt).appendTo(wx_bind_window.getclientwin());
+    });
+  })
+});

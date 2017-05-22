@@ -459,21 +459,58 @@ position: absolute;
     padding-left: 0.5em;
 }
 
-#xxtoolpop{
+#xxsidebar_toggle{
     cursor: pointer;
     display: block;
-    position: absolute;
-    top: 0.1em;
+    position: fixed;
+    top:  1.0em;
     left: 0em;
-    height: 70%;
-    width: 1em;
 //    background-color: transparent;
-    background-image:url(images/toolpop.png);
+//    background-image:url(images/sidebar_menu.png);
     background-repeat:no-repeat;
-
-    background-position:0.1em 1.5em;
 }
 
-#xxtoolpop:hover{
+#xxsidebar_toggle:hover{
     background-color:@ini_background_site;
+}
+
+// ------wxw wx_bind_window
+.wx_WxWindow{
+    z-index: 50;
+    position: fixed;
+    background-color: #f1f1f1;
+    box-shadow:0px 0px 0.5em #999;
+    border: 1px solid #eee;
+    padding: 0.5em;
+    display: none;
+}
+
+.wx_WxWindow select{
+    border: 1px double #999;
+}
+
+.wx_WxWindow input[type="button"]{
+    cursor: pointer;
+    background-color: #e9e9e9;
+    border: 1px double #999;
+    font-size: 75%;
+    margin: 1px 0.5em;
+    padding: 0.1em 0.5em;
+}
+
+.wx_WxWindow input[name="search_bt"]{
+    background-color: #ccc;
+}
+.wx_WxWindow input[name="parse_bt"]{
+    background-color: #ccc;
+}
+
+.wx_WxWindow .wx_button_r{
+    float: right;
+}
+
+.wx_clientwin{
+//    height: 95%;
+    overflow-y: scroll;
+    word-wrap: break-word;
 }

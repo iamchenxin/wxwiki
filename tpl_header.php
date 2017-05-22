@@ -45,7 +45,8 @@ if (!defined('DOKU_INC')) die();
                             echo '<li class="user">';
                             tpl_userinfo(); /* 'Logged in as ...' */
                             echo '</li>';
-                        }
+                            echo '<li id="wx_bind_wx">绑定微信</li>';
+                        }                     
                         tpl_toolsevent('usertools', array(
                             tpl_action('admin', true, 'li', true),
                             tpl_action('profile', true, 'li', true),
